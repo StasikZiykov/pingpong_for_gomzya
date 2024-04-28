@@ -44,19 +44,7 @@ class player2(gameobj):
             self.rect.x += 7
 platform2 = player2('purple.png', 480,80,100,30)
 
-class baton(gameobj):
-    def pressed(self, mouse):
-        if mouse[0] > self.rect.topleft[0]:
-            if mouse[1] > self.rect.topleft[1]:
-                if mouse[0] < self.rect.bottomright[0]:
-                    if mouse[1] < self.rect.bottomright[1]:
-                        print("Some button was pressed!")
-                        return True
-                    else: return False
-                else: return False
-            else: return False
-        else: return False
-vihod = baton('123.png', 1050,550,100,30)
+vihod = gameobj('123.png', 1050,550,100,30)
 
 ball=gameobj("circle.png",600,300,40,40)
 dx =1
@@ -69,8 +57,8 @@ while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
-        elif i.type == pygame.MOUSEBUTTONUP:
-            if baton.collidepoint(i.pos):
+        elif e.type == MOUSEBUTTONUP:
+            if vihod.collidepoint(e.pos):
                 game = False
                 
     okno.fill((106, 90, 205))
