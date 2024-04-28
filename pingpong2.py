@@ -69,7 +69,10 @@ while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
-
+        elif i.type == pygame.MOUSEBUTTONUP:
+            if baton.collidepoint(i.pos):
+                game = False
+                
     okno.fill((106, 90, 205))
     okno.blit(fon,(0,0))
     hp = wr.render("P1: " + str(points1), False, (255,255,255))
